@@ -49,7 +49,7 @@
         <div class="container">
             <h1 class="logo gradient-text">
                 <i class="fas fa-sun"></i>
-                Sunrise India
+                Sunrise India timings
             </h1>
             <p class="tagline">Discover sunrise and sunset times across Indian cities</p>
         </div>
