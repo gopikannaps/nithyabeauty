@@ -114,9 +114,9 @@
             </section>
 
             <!-- All Cities Section -->
-            <section class="all-cities-section">
+            <section class="all-cities-section fade-in-right">
                 <div class="section-header">
-                    <h3>All Indian Cities</h3>
+                    <h3 class="gradient-text">All Indian Cities</h3>
                     <button class="toggle-btn" onclick="toggleAllCities()">
                         <span id="toggleText">Show All Cities</span>
                         <i class="fas fa-chevron-down" id="toggleIcon"></i>
@@ -125,12 +125,12 @@
                 <div class="all-cities-grid" id="allCitiesGrid" style="display: none;">
                     <?php
                     $allCities = SunriseCalculator::getAllSunriseTimes();
-                    foreach ($allCities as $cityData): 
+                    foreach ($allCities as $index => $cityData): 
                     ?>
-                    <div class="city-info-card">
+                    <div class="city-info-card gpu-accelerated" style="animation-delay: <?php echo ($index % 12) * 0.05; ?>s">
                         <div class="city-header">
                             <h4><?php echo $cityData['city']; ?></h4>
-                            <span class="coordinates">
+                            <span class="coordinates tooltip" data-tooltip="Geographic Coordinates">
                                 <?php echo round($cityData['coordinates']['lat'], 2); ?>°N, 
                                 <?php echo round($cityData['coordinates']['lng'], 2); ?>°E
                             </span>
