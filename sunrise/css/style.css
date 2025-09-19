@@ -16,13 +16,19 @@
     --gradient-sunrise: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffdd59 100%);
     --gradient-sunset: linear-gradient(135deg, #ff4757 0%, #ff6b35 50%, #ffa726 100%);
     
-    /* Dynamic background gradients based on time */
-    --gradient-dawn: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-    --gradient-morning: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-    --gradient-afternoon: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-evening: linear-gradient(135deg, #ff6b6b 0%, #ffa726 50%, #ff8a65 100%);
-    --gradient-night: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
-    --gradient-midnight: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #0f0f23 100%);
+    /* Realistic sunrise/sunset color gradients */
+    --gradient-pre-dawn: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 30%, #2d1b69 70%, #3c2a78 100%);
+    --gradient-dawn: linear-gradient(135deg, #2d1b69 0%, #5b2c6f 20%, #8e44ad 40%, #e74c3c 60%, #f39c12 80%, #f1c40f 100%);
+    --gradient-sunrise: linear-gradient(135deg, #e74c3c 0%, #f39c12 25%, #f1c40f 50%, #ffdc73 75%, #fff3cd 100%);
+    --gradient-morning: linear-gradient(135deg, #3498db 0%, #87ceeb 30%, #e0f6ff 60%, #fff8dc 100%);
+    --gradient-midday: linear-gradient(135deg, #2980b9 0%, #3498db 50%, #87ceeb 100%);
+    --gradient-afternoon: linear-gradient(135deg, #3498db 0%, #74b9ff 30%, #a29bfe 70%, #fd79a8 100%);
+    --gradient-golden-hour: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 25%, #e17055 50%, #d63031 75%, #74b9ff 100%);
+    --gradient-sunset: linear-gradient(135deg, #d63031 0%, #e17055 20%, #fdcb6e 40%, #fd79a8 60%, #a29bfe 80%, #6c5ce7 100%);
+    --gradient-twilight: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 25%, #fd79a8 50%, #2d3436 75%, #636e72 100%);
+    --gradient-dusk: linear-gradient(135deg, #2d3436 0%, #636e72 30%, #74b9ff 60%, #0984e3 100%);
+    --gradient-night: linear-gradient(135deg, #2d3436 0%, #636e72 25%, #2c3e50 50%, #34495e 75%, #2c3e50 100%);
+    --gradient-midnight: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 25%, #2c3e50 50%, #1a1a3a 75%, #0f0f23 100%);
     
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
@@ -37,20 +43,73 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background: var(--gradient-afternoon);
+    background: var(--gradient-midday);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
     transition: var(--slow-transition);
 }
 
-/* Dynamic background classes */
-body.dawn { background: var(--gradient-dawn); }
-body.morning { background: var(--gradient-morning); }
-body.afternoon { background: var(--gradient-afternoon); }
-body.evening { background: var(--gradient-evening); }
-body.night { background: var(--gradient-night); }
-body.midnight { background: var(--gradient-midnight); }
+/* Dynamic background classes based on realistic sunrise times */
+body.pre-dawn { 
+    background: var(--gradient-pre-dawn); 
+    color: #e2e8f0;
+}
+
+body.dawn { 
+    background: var(--gradient-dawn); 
+    color: #2c3e50;
+}
+
+body.sunrise { 
+    background: var(--gradient-sunrise); 
+    color: #2c3e50;
+}
+
+body.morning { 
+    background: var(--gradient-morning); 
+    color: #2c3e50;
+}
+
+body.midday { 
+    background: var(--gradient-midday); 
+    color: #2c3e50;
+}
+
+body.afternoon { 
+    background: var(--gradient-afternoon); 
+    color: #2c3e50;
+}
+
+body.golden-hour { 
+    background: var(--gradient-golden-hour); 
+    color: #2c3e50;
+}
+
+body.sunset { 
+    background: var(--gradient-sunset); 
+    color: #2c3e50;
+}
+
+body.twilight { 
+    background: var(--gradient-twilight); 
+    color: #e2e8f0;
+}
+
+body.dusk { 
+    background: var(--gradient-dusk); 
+    color: #e2e8f0;
+}
+
+body.night { 
+    background: var(--gradient-night); 
+    color: #e2e8f0;
+}
+
+body.midnight { 
+    background: var(--gradient-midnight); 
+    color: #e2e8f0;
+}
 
 .container {
     max-width: 1200px;
@@ -82,17 +141,85 @@ body.midnight { background: var(--gradient-midnight); }
     transition: var(--slow-transition);
 }
 
-/* Dynamic sun styles */
+/* Dynamic sun styles based on time of day */
+.sun.pre-dawn { 
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 0 0 40px rgba(52, 73, 94, 0.3), 0 0 80px rgba(52, 73, 94, 0.1);
+    width: 80px;
+    height: 80px;
+}
+
 .sun.dawn { 
-    background: linear-gradient(135deg, #ffb347 0%, #ffcc33 100%);
-    box-shadow: 0 0 60px rgba(255, 179, 71, 0.5), 0 0 100px rgba(255, 179, 71, 0.3);
+    background: linear-gradient(135deg, #e74c3c 0%, #f39c12 50%, #f1c40f 100%);
+    box-shadow: 0 0 80px rgba(231, 76, 60, 0.6), 0 0 120px rgba(243, 156, 18, 0.4);
+    width: 120px;
+    height: 120px;
+}
+
+.sun.sunrise { 
+    background: linear-gradient(135deg, #f39c12 0%, #f1c40f 50%, #ffdc73 100%);
+    box-shadow: 0 0 100px rgba(243, 156, 18, 0.8), 0 0 150px rgba(241, 196, 15, 0.5);
+    width: 140px;
+    height: 140px;
+}
+
+.sun.morning { 
+    background: linear-gradient(135deg, #f1c40f 0%, #ffdc73 50%, #fff3cd 100%);
+    box-shadow: 0 0 80px rgba(241, 196, 15, 0.6), 0 0 120px rgba(255, 220, 115, 0.4);
+}
+
+.sun.midday { 
+    background: linear-gradient(135deg, #fff3cd 0%, #ffffff 50%, #fff8dc 100%);
+    box-shadow: 0 0 100px rgba(255, 255, 255, 0.8), 0 0 150px rgba(255, 248, 220, 0.5);
+    width: 160px;
+    height: 160px;
+}
+
+.sun.afternoon { 
+    background: linear-gradient(135deg, #fff8dc 0%, #ffdc73 50%, #f1c40f 100%);
+    box-shadow: 0 0 80px rgba(255, 248, 220, 0.6), 0 0 120px rgba(241, 196, 15, 0.4);
+}
+
+.sun.golden-hour { 
+    background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 50%, #e17055 100%);
+    box-shadow: 0 0 120px rgba(253, 121, 168, 0.8), 0 0 180px rgba(253, 203, 110, 0.6);
+    width: 140px;
+    height: 140px;
+}
+
+.sun.sunset { 
+    background: linear-gradient(135deg, #d63031 0%, #e17055 50%, #fdcb6e 100%);
+    box-shadow: 0 0 100px rgba(214, 48, 49, 0.8), 0 0 150px rgba(225, 112, 85, 0.6);
+    width: 130px;
+    height: 130px;
+}
+
+.sun.twilight { 
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #fd79a8 100%);
+    box-shadow: 0 0 80px rgba(108, 92, 231, 0.6), 0 0 120px rgba(162, 155, 254, 0.4);
+    width: 100px;
+    height: 100px;
+}
+
+.sun.dusk { 
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    box-shadow: 0 0 60px rgba(116, 185, 255, 0.4), 0 0 100px rgba(9, 132, 227, 0.2);
+    width: 90px;
+    height: 90px;
 }
 
 .sun.night { 
     background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);
-    box-shadow: 0 0 60px rgba(199, 210, 254, 0.4), 0 0 100px rgba(199, 210, 254, 0.2);
-    width: 120px;
-    height: 120px;
+    box-shadow: 0 0 60px rgba(199, 210, 254, 0.4), 0 0 100px rgba(165, 180, 252, 0.2);
+    width: 80px;
+    height: 80px;
+}
+
+.sun.midnight { 
+    background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
+    box-shadow: 0 0 40px rgba(99, 110, 114, 0.3), 0 0 80px rgba(45, 52, 54, 0.1);
+    width: 70px;
+    height: 70px;
 }
 
 @keyframes sunMove {
@@ -134,6 +261,43 @@ body.midnight { background: var(--gradient-midnight); }
     background: rgba(255, 255, 255, 0.05);
     border-radius: 50px;
 }
+
+/* Dynamic cloud colors based on time */
+body.pre-dawn .cloud { background: rgba(108, 92, 231, 0.1); }
+body.pre-dawn .cloud:before { background: rgba(108, 92, 231, 0.08); }
+
+body.dawn .cloud { background: rgba(231, 76, 60, 0.15); }
+body.dawn .cloud:before { background: rgba(243, 156, 18, 0.1); }
+
+body.sunrise .cloud { background: rgba(243, 156, 18, 0.2); }
+body.sunrise .cloud:before { background: rgba(241, 196, 15, 0.15); }
+
+body.morning .cloud { background: rgba(255, 255, 255, 0.3); }
+body.morning .cloud:before { background: rgba(255, 255, 255, 0.2); }
+
+body.midday .cloud { background: rgba(255, 255, 255, 0.4); }
+body.midday .cloud:before { background: rgba(255, 255, 255, 0.3); }
+
+body.afternoon .cloud { background: rgba(255, 255, 255, 0.25); }
+body.afternoon .cloud:before { background: rgba(116, 185, 255, 0.1); }
+
+body.golden-hour .cloud { background: rgba(253, 203, 110, 0.3); }
+body.golden-hour .cloud:before { background: rgba(253, 121, 168, 0.2); }
+
+body.sunset .cloud { background: rgba(214, 48, 49, 0.2); }
+body.sunset .cloud:before { background: rgba(225, 112, 85, 0.15); }
+
+body.twilight .cloud { background: rgba(108, 92, 231, 0.15); }
+body.twilight .cloud:before { background: rgba(162, 155, 254, 0.1); }
+
+body.dusk .cloud { background: rgba(45, 52, 54, 0.2); }
+body.dusk .cloud:before { background: rgba(116, 185, 255, 0.1); }
+
+body.night .cloud { background: rgba(45, 52, 54, 0.3); }
+body.night .cloud:before { background: rgba(99, 110, 114, 0.2); }
+
+body.midnight .cloud { background: rgba(26, 26, 58, 0.4); }
+body.midnight .cloud:before { background: rgba(45, 52, 54, 0.3); }
 
 .cloud1 {
     width: 100px;
@@ -222,7 +386,22 @@ body.midnight { background: var(--gradient-midnight); }
     border-radius: 50%;
     pointer-events: none;
     animation: particleFloat 8s linear infinite;
+    transition: var(--slow-transition);
 }
+
+/* Dynamic particle colors based on time */
+body.pre-dawn .particle { background: rgba(108, 92, 231, 0.4); }
+body.dawn .particle { background: rgba(231, 76, 60, 0.6); }
+body.sunrise .particle { background: rgba(243, 156, 18, 0.7); }
+body.morning .particle { background: rgba(255, 255, 255, 0.8); }
+body.midday .particle { background: rgba(255, 255, 255, 0.9); }
+body.afternoon .particle { background: rgba(116, 185, 255, 0.6); }
+body.golden-hour .particle { background: rgba(253, 121, 168, 0.7); }
+body.sunset .particle { background: rgba(214, 48, 49, 0.6); }
+body.twilight .particle { background: rgba(162, 155, 254, 0.5); }
+body.dusk .particle { background: rgba(116, 185, 255, 0.4); }
+body.night .particle { background: rgba(199, 210, 254, 0.4); }
+body.midnight .particle { background: rgba(99, 110, 114, 0.3); }
 
 .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
 .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
@@ -1010,6 +1189,7 @@ body.midnight { background: var(--gradient-midnight); }
     background: white;
     border-radius: 50%;
     animation: shootingStar 3s linear infinite;
+    transition: var(--slow-transition);
 }
 
 .shooting-star::before {
@@ -1022,7 +1202,45 @@ body.midnight { background: var(--gradient-midnight); }
     background: linear-gradient(90deg, white, transparent);
     transform: rotate(-45deg);
     transform-origin: 0 0;
+    transition: var(--slow-transition);
 }
+
+/* Dynamic shooting star colors based on time */
+body.pre-dawn .shooting-star { background: #c7d2fe; }
+body.pre-dawn .shooting-star::before { background: linear-gradient(90deg, #c7d2fe, transparent); }
+
+body.dawn .shooting-star { background: #f39c12; }
+body.dawn .shooting-star::before { background: linear-gradient(90deg, #f39c12, transparent); }
+
+body.sunrise .shooting-star { background: #f1c40f; }
+body.sunrise .shooting-star::before { background: linear-gradient(90deg, #f1c40f, transparent); }
+
+body.morning .shooting-star { background: white; }
+body.morning .shooting-star::before { background: linear-gradient(90deg, white, transparent); }
+
+body.midday .shooting-star { background: #fff8dc; }
+body.midday .shooting-star::before { background: linear-gradient(90deg, #fff8dc, transparent); }
+
+body.afternoon .shooting-star { background: #74b9ff; }
+body.afternoon .shooting-star::before { background: linear-gradient(90deg, #74b9ff, transparent); }
+
+body.golden-hour .shooting-star { background: #fd79a8; }
+body.golden-hour .shooting-star::before { background: linear-gradient(90deg, #fd79a8, transparent); }
+
+body.sunset .shooting-star { background: #e17055; }
+body.sunset .shooting-star::before { background: linear-gradient(90deg, #e17055, transparent); }
+
+body.twilight .shooting-star { background: #a29bfe; }
+body.twilight .shooting-star::before { background: linear-gradient(90deg, #a29bfe, transparent); }
+
+body.dusk .shooting-star { background: #0984e3; }
+body.dusk .shooting-star::before { background: linear-gradient(90deg, #0984e3, transparent); }
+
+body.night .shooting-star { background: #a5b4fc; }
+body.night .shooting-star::before { background: linear-gradient(90deg, #a5b4fc, transparent); }
+
+body.midnight .shooting-star { background: #636e72; }
+body.midnight .shooting-star::before { background: linear-gradient(90deg, #636e72, transparent); }
 
 @keyframes shootingStar {
     0% {
@@ -1075,4 +1293,110 @@ body.midnight { background: var(--gradient-midnight); }
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+}
+
+/* Night theme styles */
+body.night-theme {
+    --text-dark: #e2e8f0;
+    --text-light: #a0aec0;
+    --primary-color: #63b3ed;
+    --secondary-color: #4299e1;
+    --accent-color: #90cdf4;
+}
+
+body.night-theme .search-card,
+body.night-theme .city-card,
+body.night-theme .city-info-card,
+body.night-theme .result-card {
+    background: rgba(26, 32, 44, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.night-theme .header {
+    background: rgba(26, 32, 44, 0.3);
+}
+
+body.night-theme .tagline {
+    color: rgba(226, 232, 240, 0.8);
+}
+
+/* Dynamic text colors for better readability */
+body.pre-dawn,
+body.twilight,
+body.dusk,
+body.night,
+body.midnight {
+    --text-dark: #e2e8f0;
+    --text-light: #a0aec0;
+}
+
+body.pre-dawn .tagline,
+body.twilight .tagline,
+body.dusk .tagline,
+body.night .tagline,
+body.midnight .tagline {
+    color: rgba(226, 232, 240, 0.9);
+}
+
+body.dawn,
+body.sunrise,
+body.morning,
+body.midday,
+body.afternoon,
+body.golden-hour,
+body.sunset {
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+}
+
+body.dawn .tagline,
+body.sunrise .tagline,
+body.morning .tagline,
+body.midday .tagline,
+body.afternoon .tagline,
+body.golden-hour .tagline,
+body.sunset .tagline {
+    color: rgba(44, 62, 80, 0.8);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .reduced-motion * {
+        animation-duration: 0.01s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01s !important;
+    }
+}
+
+/* Paused animations class */
+.paused-animations .sun,
+.paused-animations .cloud,
+.paused-animations .particle {
+    animation-play-state: paused;
+}
+
+/* Touch device optimizations */
+.touch-device .city-card:hover,
+.touch-device .city-info-card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+}
+
+.touch-device .city-card:active,
+.touch-device .city-info-card:active {
+    transform: scale(0.95);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+    
+    .city-card,
+    .search-card,
+    .city-info-card {
+        border: 2px solid var(--primary-color);
+    }
 }
