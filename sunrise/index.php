@@ -52,6 +52,8 @@
                 Sunrise India timings
             </h1>
             <p class="tagline">Discover sunrise and sunset times across Indian cities</p>
+            <p class="tagline">Sunset times across Indian cities</p>
+
         </div>
     </header>
 
